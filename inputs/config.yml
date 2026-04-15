@@ -1,0 +1,20 @@
+# Config — tunable knobs for the Trending GitHub Repos routine
+
+# Minimum stars a repo must have to be considered
+min_stars: 50
+
+# How many repos to feature per window
+top_n_7d: 10
+top_n_30d: 5
+
+# Don't re-feature a repo seen in the last N days unless it's doubled
+suppress_recent_days: 3
+
+# Maximum length for a one-line take (characters)
+max_take_length: 140
+
+# Commit message template
+commit_message: "trending: {{date}}"
+
+# If True, write a status note at the top when partial
+allow_partial: true
