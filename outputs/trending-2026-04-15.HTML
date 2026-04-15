@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trending AI Repos — 2026-04-15</title>
+<style>
+  :root {
+    --bg: #0e1014;
+    --panel: #161a21;
+    --panel-2: #1d222b;
+    --border: #262c37;
+    --text: #e6e9ef;
+    --muted: #8a93a6;
+    --accent: #7dd3fc;
+    --accent-2: #f0abfc;
+    --star: #fbbf24;
+    --link: #93c5fd;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f7f8fa;
+      --panel: #ffffff;
+      --panel-2: #f0f2f6;
+      --border: #e2e5eb;
+      --text: #1a1d23;
+      --muted: #5b6270;
+      --accent: #0369a1;
+      --accent-2: #a21caf;
+      --star: #b45309;
+      --link: #1d4ed8;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+  header.hero {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 28px;
+    margin-bottom: 36px;
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 8px;
+  }
+  h1 {
+    font-size: clamp(28px, 4vw, 40px);
+    margin: 0 0 6px;
+    letter-spacing: -0.02em;
+  }
+  .subtitle {
+    color: var(--muted);
+    margin: 0;
+    font-size: 15px;
+  }
+  .tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--panel-2);
+    padding: 4px;
+    border-radius: 10px;
+    margin: 32px 0 24px;
+    border: 1px solid var(--border);
+    width: fit-content;
+  }
+  .tab {
+    background: transparent;
+    color: var(--muted);
+    border: 0;
+    padding: 8px 14px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .tab.active {
+    background: var(--panel);
+    color: var(--text);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  .takeaway {
+    background: linear-gradient(135deg, var(--panel) 0%, var(--panel-2) 100%);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin-bottom: 36px;
+    position: relative;
+  }
+  .takeaway::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 16px; bottom: 16px;
+    width: 3px;
+    background: linear-gradient(180deg, var(--accent), var(--accent-2));
+    border-radius: 0 3px 3px 0;
+  }
+  .takeaway h2 {
+    margin: 0 0 10px;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .takeaway p {
+    margin: 0;
+    font-size: 15.5px;
+    color: var(--text);
+  }
+  section { margin-bottom: 40px; }
+  section h2.section-title {
+    font-size: 20px;
+    margin: 0 0 18px;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .section-title .window {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  ol.repos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .repo {
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    gap: 14px;
+    align-items: start;
+    padding: 16px 18px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .repo:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .rank {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    font-size: 14px;
+    font-weight: 500;
+    padding-top: 2px;
+  }
+  .repo-main { min-width: 0; }
+  .repo-name {
+    font-size: 15.5px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    font-family: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+    word-break: break-all;
+  }
+  .repo-name a {
+    color: var(--link);
+    text-decoration: none;
+  }
+  .repo-name a:hover { text-decoration: underline; }
+  .repo-desc {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0;
+  }
+  .stars {
+    color: var(--star);
+    font-variant-numeric: tabular-nums;
+    font-size: 13px;
+    white-space: nowrap;
+    padding-top: 3px;
+    font-weight: 500;
+  }
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+  }
+  .hidden { display: none; }
+  @media (max-width: 540px) {
+    .wrap { padding: 28px 16px 64px; }
+    .repo { grid-template-columns: 24px 1fr; }
+    .stars { grid-column: 2; padding-top: 4px; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <p class="eyebrow">Trending GitHub · AI</p>
+      <h1>Trending AI Repos</h1>
+      <p class="subtitle">Daily brief — 2026-04-15 · 10 repos (7-day) + 5 repos (30-day)</p>
+    </header>
+
+    <div class="takeaway" role="note" aria-label="Editor's take">
+      <h2>Editor's take</h2>
+      <p>The week's signal is that Claude Code has become a platform, not a product — seven of fifteen repos across both windows are skills, agent teams, or reverse-engineered clones of the harness itself. Evaluation infrastructure is quietly pulling ahead of generation infrastructure: ParseBench, litmus, and ClawBench-class benchmarks are appearing faster than new model wrappers, a shift from last week's on-device inference dominance. If you are still shipping new RAG primitives, you are now a week behind — the market has moved to measuring what you built.</p>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-target="week" role="tab" aria-selected="true">Last 7 days</button>
+      <button class="tab" data-target="month" role="tab" aria-selected="false">Last 30 days</button>
+    </div>
+
+    <section id="week">
+      <h2 class="section-title">Top 10 <span class="window">last 7 days</span></h2>
+      <ol class="repos">
+        <li class="repo"><span class="rank">01</span><div class="repo-main"><p class="repo-name"><a href="https://github.com/yaojingang/GEOFlow" target="_blank" rel="noopener">yaojingang/GEOFlow</a></p><p class="repo-desc">SEO-focused content CMS with built-in AI tasks and review workflow; a vertical play while most "AI CMS" stays generic.</p></div><span class="stars">★ 578</span></li>
+        <li class="repo"><span class="rank">02</span><div class="repo-main"><p class="repo-name"><a href="https://github.com/amitshekhariitbhu/llm-internals" target="_blank" rel="noopener">amitshekhariitbhu/llm-internals</a></p><p class="repo-desc">From-first-principles walkthrough of tokenization, attention, and inference; useful reference when debugging models.</p></div><span class="stars">★ 362</span></li>
+        <li class="repo"><span class="rank">03</span><div class="repo-main"><p class="repo-name"><a href="https://github.com/EKKOLearnAI/hermes-web-ui" target="_blank" rel="noopener">EKKOLearnAI/hermes-web-ui</a></p><p class="repo-desc">Web dashboard for the Hermes multi-platform chat agent, bundling session mgmt and scheduled jobs across Telegram/Slack/WhatsApp.</p></div><span class="stars">★ 183</span></li>
+        <li class="repo"><span class="rank">04</span><div class="repo-main"><p class="repo-name"><a href="https://github.com/liyupi/yupi-skill" target="_blank" rel="noopener">liyupi/yupi-skill</a></p><p class="repo-desc">Packages one creator's domain expertise as a distributable Claude/Cursor skill; signals personal-brand skills becoming a category.</p></div><span class="stars">★ 177</span></li>
+        <li class="repo"><span class="rank">05</span><div class="repo-main"><p class="repo-name"><a href="https://github.com/run-llama/ParseBench" target="_blank" rel="noopener">run-llama/ParseBench</a></p><p class="repo-desc">LlamaIndex's document-parsing benchmark for agents; closes the "how do I pick a PDF parser" gap with measurable OCR and table accuracy.</p></div><span class="stars">★ 138</span></li>
+        <li class="repo"><span class="rank">06</span><div class="repo-main"><p class="repo-name"><a href="https://github.com/dengxianghua888-ops/ecoalign-forge" target="_blank" rel="noopener">dengxianghua888-ops/ecoalign-forge</a></p><p class="repo-desc">Multi-agent DPO pipeline: red-team attack, multi-persona review, final arbitration; turns synthetic data into preference pairs.</p></div><span class="stars">★ 126</span></li>
+        <li class="repo"><span class="rank">07</span><div class="repo-main"><p class="repo-name"><a href="https://github.com/debpalash/OmniVoice-Studio" target="_blank" rel="noopener">debpalash/OmniVoice-Studio</a></p><p class="repo-desc">Desktop studio stitching Whisper, TTS, and voice cloning across 600 languages; hobbyist pipeline for dubbing workflows.</p></div><span class="stars">★ 116</span></li>
+        <li class="repo"><span class="rank">08</span><div class="repo-main"><p class="repo-name"><a href="https://github.com/litmus4ai/litmus" target="_blank" rel="noopener">litmus4ai/litmus</a></p><p class="repo-desc">Unit-test framework for prompts that diffs behaviour across models; the "pytest for LLMs" pattern finally getting traction.</p></div><span class="stars">★ 91</span></li>
+        <li class="repo"><span class="rank">09</span><div class="repo-main"><p class="repo-name"><a href="https://github.com/NYCU-Chung/my-claude-devteam" target="_blank" rel="noopener">NYCU-Chung/my-claude-devteam</a></p><p class="repo-desc">Twelve-agent Claude Code setup with an opinionated methodology; worth mining for hook patterns even if you ignore the meta.</p></div><span class="stars">★ 86</span></li>
+        <li class="repo"><span class="rank">10</span><div class="repo-main"><p class="repo-name"><a href="https://github.com/chekdata/chek-ego-miner" target="_blank" rel="noopener">chekdata/chek-ego-miner</a></p><p class="repo-desc">Crowdsourced capture of embodied-robot data with an iOS app and Rust edge host; early infra bet on humanoid training data.</p></div><span class="stars">★ 63</span></li>
+      </ol>
+    </section>
+
+    <section id="month" class="hidden">
+      <h2 class="section-title">Top 5 <span class="window">last 30 days</span></h2>
+      <ol class="repos">
+        <li class="repo"><span class="rank">01</span><div class="repo-main"><p class="repo-name"><a href="https://github.com/MemPalace/mempalace" target="_blank" rel="noopener">MemPalace/mempalace</a></p><p class="repo-desc">Benchmark-topping open-source memory layer; the reference implementation that agent frameworks now integrate against.</p></div><span class="stars">★ 46,235</span></li>
+        <li class="repo"><span class="rank">02</span><div class="repo-main"><p class="repo-name"><a href="https://github.com/JuliusBrussee/caveman" target="_blank" rel="noopener">JuliusBrussee/caveman</a></p><p class="repo-desc">Claude Code skill that rewrites prompts in pidgin to cut 65% of tokens; the joke works because it measurably does.</p></div><span class="stars">★ 31,131</span></li>
+        <li class="repo"><span class="rank">03</span><div class="repo-main"><p class="repo-name"><a href="https://github.com/holaboss-ai/holaOS" target="_blank" rel="noopener">holaboss-ai/holaOS</a></p><p class="repo-desc">Agent runtime built for multi-day continuity and self-evolution; the month's most ambitious bet on "agent as OS" rather than script.</p></div><span class="stars">★ 2,537</span></li>
+        <li class="repo"><span class="rank">04</span><div class="repo-main"><p class="repo-name"><a href="https://github.com/CoderLuii/HolyClaude" target="_blank" rel="noopener">CoderLuii/HolyClaude</a></p><p class="repo-desc">Docker-packaged coding workstation bundling Claude Code, seven CLIs, and a headless browser; useful one-command spin-up.</p></div><span class="stars">★ 1,982</span></li>
+        <li class="repo"><span class="rank">05</span><div class="repo-main"><p class="repo-name"><a href="https://github.com/Windy3f3f3f3f/how-claude-code-works" target="_blank" rel="noopener">Windy3f3f3f3f/how-claude-code-works</a></p><p class="repo-desc">Deep source-level analysis of Claude Code's agent loop and context engineering; primary read for anyone cloning the architecture.</p></div><span class="stars">★ 1,865</span></li>
+      </ol>
+    </section>
+
+    <footer>Generated by the Trending GitHub Repos routine · 2026-04-15 UTC</footer>
+  </div>
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const panels = { week: document.getElementById('week'), month: document.getElementById('month') };
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => { x.classList.remove('active'); x.setAttribute('aria-selected', 'false'); });
+    t.classList.add('active'); t.setAttribute('aria-selected', 'true');
+    Object.entries(panels).forEach(([k, el]) => el.classList.toggle('hidden', k !== t.dataset.target));
+  }));
+</script>
+</body>
+</html>
