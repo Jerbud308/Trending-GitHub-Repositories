@@ -9,7 +9,7 @@ Every day at 08:00 AM, Claude Code runs [`ROUTINE.md`](./ROUTINE.md). It hits th
 ## Setup
 
 1. Fork or clone this repo.
-2. Connect it as the destination repo when you create the routine at [cloud.ai/code/routines](https://cloud.ai/code/routines).
+2. Connect it as the destination repo when you create the routine at [claude.ai/code/routines](https://claude.ai/code/routines).
 3. Paste the contents of [`ROUTINE.md`](./ROUTINE.md) as the prompt.
 4. Trigger: daily cron at `0 8 * * *`.
 5. Save. First run happens at the next 08:00.
