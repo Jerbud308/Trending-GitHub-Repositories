@@ -18,9 +18,22 @@ who wants to know what matters this week without scrolling GitHub.
 6. If the GitHub API rate-limits before you finish, commit partial work with a `> status: partial (rate-limited at step N)` note at the top.
 
 ## OUTPUT
-Commit exactly one file at `outputs/trending-YYYY-MM-DD.md` using today's UTC date.
+Commit exactly one file at `outputs/trending-YYYY-MM-DD.md` using today's UTC date, **directly to `main`**.
 
-Format:
+Required git workflow (follow exactly, do not skip):
+
+```bash
+git checkout main
+git pull --ff-only origin main
+# write the file at outputs/trending-YYYY-MM-DD.md
+git add outputs/trending-YYYY-MM-DD.md
+git commit -m "trending: YYYY-MM-DD"
+git push origin main
+```
+
+Do NOT commit to a feature branch. Do NOT open a pull request. Consumers (downstream briefs, RSS, etc.) read directly from `main`, so the file must land on `main` for the run to count as successful.
+
+Format of the markdown file:
 
 ```markdown
 # Trending AI Repos — {{YYYY-MM-DD}}
@@ -47,3 +60,4 @@ Format:
 - Exclude repos you featured in the last 3 days unless they've doubled in stars.
 - Keep each "one-line take" under 140 characters. No emojis.
 - Commit message format: `trending: YYYY-MM-DD`.
+- Push must target `main`. If `git push origin main` fails (non-fast-forward, auth, etc.), retry once after `git pull --rebase origin main`. If it still fails, surface the error clearly — do not fall back to a feature branch.
